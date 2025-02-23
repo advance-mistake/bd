@@ -2,7 +2,7 @@ import psycopg2
 from psycopg2 import sql
 
 def create_db(conn):
-    conn = psycopg2.connect(database="pampam", user="postgres", password="Jk09v2q4")
+    conn = psycopg2.connect(database="pampam", user="postgres", password="****")
     with conn.cursor() as cur:
         cur.execute('''
             CREATE TABLE IF NOT EXISTS clients (
@@ -22,7 +22,7 @@ def create_db(conn):
         conn.commit()
 
 def add_client(conn, first_name, last_name, email, phones=None):
-    conn = psycopg2.connect(database="pampam", user="postgres", password="Jk09v2q4")
+    conn = psycopg2.connect(database="pampam", user="postgres", password="****")
     with conn.cursor() as cur:
         cur.execute('''
             INSERT INTO clients (first_name, last_name, email)
@@ -40,7 +40,7 @@ def add_client(conn, first_name, last_name, email, phones=None):
         conn.commit()
 
 def add_phone(conn, client_id, phone):
-    conn = psycopg2.connect(database="pampam", user="postgres", password="Jk09v2q4")
+    conn = psycopg2.connect(database="pampam", user="postgres", password="****")
     with conn.cursor() as cur:
         cur.execute('''
             INSERT INTO phones (client_id, phone_number)
@@ -49,7 +49,7 @@ def add_phone(conn, client_id, phone):
         conn.commit()
 
 def change_client(conn, client_id, first_name=None, last_name=None, email=None, phones=None):
-    conn = psycopg2.connect(database="pampam", user="postgres", password="Jk09v2q4")
+    conn = psycopg2.connect(database="pampam", user="postgres", password="****")
     with conn.cursor() as cur:
         updates = []
         params = []
@@ -80,7 +80,7 @@ def change_client(conn, client_id, first_name=None, last_name=None, email=None, 
         conn.commit()
 
 def delete_phone(conn, client_id, phone):
-    conn = psycopg2.connect(database="pampam", user="postgres", password="Jk09v2q4")
+    conn = psycopg2.connect(database="pampam", user="postgres", password="****")
     with conn.cursor() as cur:
         cur.execute('''
             DELETE FROM phones
@@ -89,7 +89,7 @@ def delete_phone(conn, client_id, phone):
         conn.commit()
 
 def delete_client(conn, client_id):
-    conn = psycopg2.connect(database="pampam", user="postgres", password="Jk09v2q4")
+    conn = psycopg2.connect(database="pampam", user="postgres", password="****")
     with conn.cursor() as cur:
         cur.execute('''
             DELETE FROM clients WHERE id = %s
@@ -97,7 +97,7 @@ def delete_client(conn, client_id):
         conn.commit()
 
 def find_client(conn, first_name=None, last_name=None, email=None, phone=None):
-    conn = psycopg2.connect(database="pampam", user="postgres", password="Jk09v2q4")
+    conn = psycopg2.connect(database="pampam", user="postgres", password="****")
     with conn.cursor() as cur:
         conditions = []
         params = []
@@ -120,7 +120,7 @@ def find_client(conn, first_name=None, last_name=None, email=None, phone=None):
         result = cur.fetchall()
         return result
 
-with psycopg2.connect(database="pampam", user="postgres", password="Jk09v2q4") as conn:
+with psycopg2.connect(database="pampam", user="postgres", password="****") as conn:
     create_db(conn)
     add_client(conn, "Vladimir", "Vladimirov", "Vladimir@gmail.com", ["+1111", "+2222"])
     add_client(conn, "Ivan", "Ivanov", "Ivan@gmail.com", ["+5555", "+6666"])
